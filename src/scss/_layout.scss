@@ -5,9 +5,12 @@
   color: #fff;
   line-height: 40px;
   padding: 0 10px 0 30px;
-
-  float: left;
+  display: inline-block;
   position: relative;
+
+  &:hover {
+    color: #fff;
+  }
 
   &:before {
     content: '⇋';
@@ -17,5 +20,19 @@
     top: 0;
     left: 0;
     transform: scale3d(0.6, 1, 1);
+  }
+}
+
+.add-button-wrapper {
+  height: auto;
+  text-align: right;
+}
+
+.add-button {
+  background: transparent !important;
+  color: #fff;
+
+  &:hover{
+    background: transparent;
   }
 }
