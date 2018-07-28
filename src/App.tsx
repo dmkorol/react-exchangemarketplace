@@ -1,9 +1,6 @@
-import 'antd/dist/antd.css';
 import * as React from 'react';
-import './App.css';
 
 import { Breadcrumb, Layout, Menu } from 'antd';
-
 const { Header, Content, Footer } = Layout;
 
 class App extends React.Component {
