@@ -1,7 +1,21 @@
 .logo {
-  width: 120px;
   height: 40px;
-  background: red;
-  padding: 20px;
+  font-size: 1.4em;
+  margin: 13px 20px 0 0;
+  color: #fff;
+  line-height: 40px;
+  padding: 0 10px 0 30px;
+
   float: left;
+  position: relative;
+
+  &:before {
+    content: '⇋';
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale3d(0.6, 1, 1);
+  }
 }

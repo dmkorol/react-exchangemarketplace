@@ -8,7 +8,7 @@ class App extends React.Component {
         return (
             <Layout className="layout">
                 <Header>
-                    <div className="logo" />
+                    <div className="logo">EXCHANGE</div>
                     <Menu
                         theme="dark"
                         mode="horizontal"
