@@ -8,5 +8,11 @@
       "config/**/*.js",
       "node_modules/**/*.ts"
     ]
+  },
+  "rules": {
+    "ordered-imports": false,
+    "interface-name": true,
+    "jsx-no-lambda": true,
+    "object-literal-sort-keys": false
   }
 }

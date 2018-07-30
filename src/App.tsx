@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import { Layout, Menu, Button, Row, Col } from 'antd';
-import { HomePage } from './pages/home';
-import { ListPage } from './pages/list';
-import { CategoriesPage } from './pages/categories';
-import { ContactPage } from './pages/contacts';
-import { NewItemPage } from './pages/new-item';
+import { HomePage } from './pages/home.page';
+import { ListPage } from './pages/list.page';
+import { CategoriesPage } from './pages/categories.page';
+import { ContactPage } from './pages/contacts.page';
+import { NewItemPage } from './pages/new-item.page';
+import { NotFound404Page } from './pages/not-found-404.page';
+import { ItemPage } from './pages/item.page';
 
 const { Header, Content, Footer } = Layout;
+
+const MENU = [
+    { url: '/list', title: 'ALL LISTINGS' },
+    { url: '/categories', title: 'CATEGORIES' },
+    { url: '/contacts', title: 'CONTACTS' },
+];
 
 class App extends React.Component {
     public render() {
@@ -26,15 +34,11 @@ class App extends React.Component {
                                     defaultSelectedKeys={['0']}
                                     style={{ lineHeight: '64px' }}
                                 >
-                                    <Menu.Item key="1">
-                                        <Link to="/list">ALL LISTINGS</Link>
-                                    </Menu.Item>
-                                    <Menu.Item key="2">
-                                        <Link to="/categories">CATEGORIES</Link>
-                                    </Menu.Item>
-                                    <Menu.Item key="3">
-                                        <Link to="/contacts">CONTACTS</Link>
-                                    </Menu.Item>
+                                    {MENU.map((item, key) =>
+                                        <Menu.Item key={key}>
+                                            <Link to={item.url}>{item.title}</Link>
+                                        </Menu.Item>
+                                    )}
                                 </Menu>
                             </Col>
                             <Col span={4} className="add-button-wrapper">
@@ -51,9 +55,11 @@ class App extends React.Component {
                             <Route exact={true} path="/" component={HomePage}/>
                             <Route exact={true} path="/list" component={ListPage}/>
                             <Route exact={true} path="/list/new" component={NewItemPage}/>
-                            <Route path="/list/:id" component={ListPage}/>
+                            <Route path="/list/:id" component={ItemPage}/>
                             <Route exact={true} path="/categories" component={CategoriesPage}/>
                             <Route exact={true} path="/contacts" component={ContactPage}/>
+                            <Route path='/404' component={NotFound404Page} />
+                            <Redirect from='*' to='/404' />
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
