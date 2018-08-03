@@ -19,6 +19,8 @@ const MENU = [
 
 class App extends React.Component {
     public render() {
+        const defaultMenu = MENU.filter(item => window.location.href.indexOf(item.url)!==-1)[0];
+        const defaultMenuID = defaultMenu && defaultMenu.url ? MENU.indexOf(defaultMenu) : -1;
         return (
             <Router>
                 <Layout className="layout">
@@ -31,7 +33,7 @@ class App extends React.Component {
                                 <Menu
                                     theme="dark"
                                     mode="horizontal"
-                                    defaultSelectedKeys={['0']}
+                                    defaultSelectedKeys={[defaultMenuID.toString()]}
                                     style={{ lineHeight: '64px' }}
                                 >
                                     {MENU.map((item, key) =>
@@ -58,8 +60,8 @@ class App extends React.Component {
                             <Route path="/list/:id" component={ItemPage}/>
                             <Route exact={true} path="/categories" component={CategoriesPage}/>
                             <Route exact={true} path="/contacts" component={ContactPage}/>
-                            <Route path='/404' component={NotFound404Page} />
-                            <Redirect from='*' to='/404' />
+                            <Route path='/404' component={NotFound404Page}/>
+                            <Redirect from='*' to='/404'/>
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
